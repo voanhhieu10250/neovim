@@ -18,6 +18,7 @@ null_ls.setup({
     formatting.rubocop,
     diagnostics.erb_lint,
     diagnostics.rubocop,
+    diagnostics.eslint,
     -- diagnostics.flake8
 	},
 })

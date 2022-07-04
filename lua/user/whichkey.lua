@@ -150,8 +150,9 @@ local mappings = {
       "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
       "Prev Diagnostic",
     },
-    l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+    c = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    L = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Diagnostics" },
+    l = { "<cmd>lua vim.diagnostic.open_float({ border = 'rounded' })<cr>", "Show diagnostic" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = {

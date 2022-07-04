@@ -94,7 +94,7 @@ return packer.startup(function(use)
   }
   use "windwp/nvim-ts-autotag"
   use "JoosepAlviste/nvim-ts-context-commentstring"
-  use "p00f/nvim-ts-rainbow"
+  -- use "p00f/nvim-ts-rainbow"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
@@ -102,7 +102,7 @@ return packer.startup(function(use)
   -- DAP
   use "mfussenegger/nvim-dap"
   use "rcarriga/nvim-dap-ui"
-  use "Pocco81/DAPInstall.nvim"
+  use "ravenxrz/DAPInstall.nvim"
 
 
   -- Automatically set up your configuration after cloning packer.nvim

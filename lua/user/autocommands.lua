@@ -27,6 +27,7 @@ vim.cmd [[
   augroup _alpha
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
+    autocmd User AlphaReady set laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
   augroup end
 ]]
 
@@ -35,3 +36,4 @@ vim.cmd [[
 --   autocmd!
 --   autocmd BufWritePre * lua vim.lsp.buf.formatting()
 -- augroup end
+vim.cmd "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
