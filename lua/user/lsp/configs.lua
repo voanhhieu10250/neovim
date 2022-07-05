@@ -5,7 +5,16 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "jsonls", "sumneko_lua", "tsserver", "html", "tailwindcss", "cssmodules_ls", "solargraph" }
+local servers = {
+	"sumneko_lua",
+	"solargraph",
+  "tsserver",
+  "jsonls",
+	"html",
+	"tailwindcss",
+	"cssls",
+	"yamlls",
+}
 
 lsp_installer.setup({
 	ensure_installed = servers,
