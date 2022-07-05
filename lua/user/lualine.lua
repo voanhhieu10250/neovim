@@ -5,6 +5,7 @@ end
 
 local status_theme_ok, theme = pcall(require, "lualine.themes.onedarker_alt")
 if not status_theme_ok then
+  vim.notify("something went wrong with the colorscheme")
   return
 end
 
