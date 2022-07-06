@@ -8,12 +8,14 @@ local lspconfig = require("lspconfig")
 local servers = {
 	"sumneko_lua",
 	"solargraph",
-  "tsserver",
-  "jsonls",
+	"tsserver",
+	"jsonls",
 	"html",
 	"tailwindcss",
 	"cssls",
 	"yamlls",
+	"bashls",
+	"pyright",
 }
 
 lsp_installer.setup({
