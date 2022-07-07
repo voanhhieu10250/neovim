@@ -3,18 +3,18 @@ if not status_ok then
 	return
 end
 
--- local status_theme_ok, theme = pcall(require, "lualine.themes.onedarker_alt")
+local status_theme_ok, theme = pcall(require, "lualine.themes.onedarker_alt")
 -- local status_theme_ok, theme = pcall(require, "lualine.themes.darkplus_dark")
--- if not status_theme_ok then
---   vim.notify("something went wrong with the colorscheme")
---   return
--- end
+if not status_theme_ok then
+  vim.notify("something went wrong with the colorscheme")
+  return
+end
 
--- vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#32363e" })
--- vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#abb2bf", bg = "#32363e", bold = false })
--- -- vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D7BA7D", bg = "#252525" })
--- vim.api.nvim_set_hl(0, "SLProgress", { fg = "#abb2bf", bg = "#32363e" })
--- vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#6b727f", bg = "#282c34" })
+vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#32363e" })
+vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#abb2bf", bg = "#32363e", bold = false })
+-- vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D7BA7D", bg = "#252525" })
+vim.api.nvim_set_hl(0, "SLProgress", { fg = "#abb2bf", bg = "#32363e" })
+vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#6b727f", bg = "#282c34" })
 
 -- darkerplus
 -- vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#303030" })
@@ -171,9 +171,9 @@ local location = {
     -- darkerplus
     -- return { fg = "#252525", bg = mode_color[vim.fn.mode()] }
     -- tokyonight
-    return { fg = "#000000", bg = mode_color[vim.fn.mode()] }
+    -- return { fg = "#000000", bg = mode_color[vim.fn.mode()] }
     -- onedarker
-    -- return { fg = "#1E232A", bg = mode_color[vim.fn.mode()] }
+    return { fg = "#1E232A", bg = mode_color[vim.fn.mode()] }
   end,
 }
 
@@ -181,8 +181,8 @@ lualine.setup {
   options = {
     globalstatus = true,
     icons_enabled = true,
-    theme = "auto",
-    -- theme = theme,
+    -- theme = "auto",
+    theme = theme,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = { "alpha", "dashboard" },
