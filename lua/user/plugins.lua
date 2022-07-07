@@ -57,6 +57,7 @@ return packer.startup(function(use)
 
   -- Lua
   use "norcalli/nvim-colorizer.lua"
+  use "windwp/nvim-spectre"
 
   -- UI
   use "stevearc/dressing.nvim"
@@ -94,6 +95,7 @@ return packer.startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "RRethy/vim-illuminate"
   use "ray-x/lsp_signature.nvim"
+  use "folke/trouble.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
