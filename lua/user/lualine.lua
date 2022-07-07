@@ -15,6 +15,7 @@ vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#abb2bf", bg = "#32363e", bold = 
 -- vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D7BA7D", bg = "#252525" })
 vim.api.nvim_set_hl(0, "SLProgress", { fg = "#abb2bf", bg = "#32363e" })
 vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#6b727f", bg = "#282c34" })
+vim.api.nvim_set_hl(0, "SLLSP", { fg = "#5e81ac", bg = "#282c34" })
 
 -- darkerplus
 -- vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#303030" })
@@ -83,6 +84,49 @@ local diff = {
   symbols = { added = icons.git.Add .. " ", modified = icons.git.Mod .. " ", removed = icons.git.Remove .. " " }, -- changes diff symbols
   cond = hide_in_width,
   separator = "%#SLSeparator#" .. "│ " .. "%*",
+}
+
+local lanuage_server = {
+  function()
+    local clients = vim.lsp.buf_get_clients()
+    local client_names = {}
+
+    -- add client
+    for _, client in pairs(clients) do
+      if client.name ~= "copilot" and client.name ~= "null-ls" then
+        table.insert(client_names, client.name)
+      end
+    end
+    local buf_ft = vim.bo.filetype
+
+    -- add formatter
+    local s = require "null-ls.sources"
+    local available_sources = s.get_available(buf_ft)
+    local registered = {}
+    for _, source in ipairs(available_sources) do
+      for method in pairs(source.methods) do
+        registered[method] = registered[method] or {}
+        table.insert(registered[method], source.name)
+      end
+    end
+
+    local formatter = registered["NULL_LS_FORMATTING"]
+    local linter = registered["NULL_LS_DIAGNOSTICS"]
+    if formatter ~= nil then
+      vim.list_extend(client_names, formatter)
+    end
+    if linter ~= nil then
+      vim.list_extend(client_names, linter)
+    end
+
+    -- join client names with commas
+    local client_names_str = table.concat(client_names, ", ")
+
+    return "%#SLLSP#" .. "[" .. client_names_str .. "]" .. "%*"
+  end,
+  padding = 0,
+  cond = hide_in_width,
+  separator = "%#SLSeparator#" .. " │ " .. "%*",
 }
 
 -- local mode = {
@@ -194,7 +238,7 @@ lualine.setup {
     -- lualine_c = {},
     lualine_c = { { current_signature, cond = hide_in_width } },
     -- lualine_x = { diff, spaces, "encoding", filetype },
-    lualine_x = { diff, spaces, filetype },
+    lualine_x = { diff, lanuage_server, spaces, filetype },
     lualine_y = { progress },
     lualine_z = { location },
   },

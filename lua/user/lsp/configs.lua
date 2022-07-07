@@ -16,6 +16,7 @@ local servers = {
 	"yamlls",
 	"bashls",
 	"pyright",
+	"jdtls",
 }
 
 lsp_installer.setup({

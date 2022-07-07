@@ -16,9 +16,10 @@ null_ls.setup({
 		formatting.stylua,
     formatting.erb_lint,
     formatting.rubocop,
+    formatting.google_java_format,
     diagnostics.erb_lint,
     diagnostics.rubocop,
     diagnostics.eslint,
-    -- diagnostics.flake8
+    diagnostics.flake8
 	},
 })
