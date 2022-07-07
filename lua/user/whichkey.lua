@@ -195,7 +195,7 @@ local mappings = {
       "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
       "Prev Diagnostic",
     },
-    c = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    -- c = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     l = { "<cmd>lua vim.diagnostic.open_float({ border = 'rounded' })<cr>", "Show diagnostic" },
     o = { "<cmd>SymbolsOutline<cr>", "Outline" },
     q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },

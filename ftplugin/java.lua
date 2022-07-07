@@ -20,7 +20,7 @@ else
 end
 
 -- Find root of project
-local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
+local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle", "nbproject" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 if root_dir == "" then
   return
@@ -123,12 +123,12 @@ local config = {
       maven = {
         downloadSources = true,
       },
-      implementationsCodeLens = {
-        enabled = true,
-      },
-      referencesCodeLens = {
-        enabled = true,
-      },
+      -- implementationsCodeLens = {
+      --   enabled = true,
+      -- },
+      -- referencesCodeLens = {
+      --   enabled = true,
+      -- },
       references = {
         includeDecompiledSources = true,
       },
