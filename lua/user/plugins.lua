@@ -60,6 +60,7 @@ return packer.startup(function(use)
 
   -- UI
   use "stevearc/dressing.nvim"
+  use { "christianchiarulli/nvim-gps", branch = "text_hl" }
   use "rcarriga/nvim-notify"
   use "folke/which-key.nvim"
   use "goolord/alpha-nvim"
