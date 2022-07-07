@@ -8,7 +8,7 @@ Each video will be associated with a branch so checkout the one you are interest
 
 Make sure to remove or move your current `nvim` directory
 
-**IMPORTANT** Requires [Neovim v0.7.0](https://github.com/neovim/neovim/releases/tag/v0.7.0). 
+**IMPORTANT** Requires Neovim v0.8 or above
 ```
 git clone https://github.com/voanhhieu10250/neovim-configuration.git ~/.config/nvim
 ```
