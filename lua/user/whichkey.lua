@@ -212,6 +212,7 @@ local mappings = {
     name = "Split",
     s = { "<cmd>split<cr>", "HSplit" },
     v = { "<cmd>vsplit<cr>", "VSplit" },
+    q = { "<cmd>:q<cr>", "Close" },
   },
 
   t = {
