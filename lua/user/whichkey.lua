@@ -15,7 +15,7 @@ local setup = {
     -- No actual key bindings are created
     presets = {
       operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-      motions = true, -- adds help for motions
+      motions = false, -- adds help for motions
       text_objects = true, -- help for text objects triggered after entering an operator
       windows = true, -- default bindings on <c-w>
       nav = true, -- misc bindings to work with windows
@@ -29,7 +29,7 @@ local setup = {
   key_labels = {
     -- override the label used to display some keys. It doesn't effect WK in any other way.
     -- For example:
-    -- ["<space>"] = "SPC",
+    ["<space>"] = "SPC",
     -- ["<cr>"] = "RET",
     -- ["<tab>"] = "TAB",
   },
@@ -58,7 +58,7 @@ local setup = {
   },
   ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-  show_help = true, -- show help message on the command line when the popup is visible
+  show_help = false, -- show help message on the command line when the popup is visible
   triggers = "auto", -- automatically setup triggers
   -- triggers = {"<leader>"} -- or specify a list manually
   triggers_blacklist = {
@@ -86,6 +86,11 @@ local mappings = {
   --   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
   --   "Buffers",
   -- },
+  m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
+  ["."] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', "Harpoon Next" },
+  [","] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', "Harpoon Prev" },
+  s = { "<cmd>Telescope harpoon marks<cr>", "Search Files" },
+  [";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["R"] = { "<cmd>NvimTreeRefresh<cr>", "Refresh Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
@@ -207,14 +212,26 @@ local mappings = {
       "Workspace Symbols",
     },
     t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
+    u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
   },
-  s = {
-    name = "Split",
-    s = { "<cmd>split<cr>", "HSplit" },
-    v = { "<cmd>vsplit<cr>", "VSplit" },
-    q = { "<cmd>:q<cr>", "Close" },
+  -- s = {
+  --   name = "Split",
+  --   s = { "<cmd>split<cr>", "HSplit" },
+  --   v = { "<cmd>vsplit<cr>", "VSplit" },
+  --   q = { "<cmd>:q<cr>", "Close" },
+  -- },
+  S = {
+    name = "Session",
+    s = { "<silent><cmd>SaveSession<cr>", "Save" },
+    r = { "<silent><cmd>RestoreSession<cr>", "Restore" },
+    x = { "<silent><cmd>DeleteSession<cr>", "Delete" },
+    f = { "<silent><cmd>Autosession search<cr>", "Find" },
+    d = { "<silent><cmd>Autosession delete<cr>", "Find Delete" },
+    -- a = { ":SaveSession<cr>", "test" },
+    -- a = { ":RestoreSession<cr>", "test" },
+    -- a = { ":RestoreSessionFromFile<cr>", "test" },
+    -- a = { ":DeleteSession<cr>", "test" },
   },
-
   t = {
     name = "Terminal",
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },

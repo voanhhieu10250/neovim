@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 local dashboard = require("alpha.themes.dashboard")
+local icons = require("user.icons")
 dashboard.section.header.val = {
 	[[                               __                ]],
 	[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
@@ -18,6 +19,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
 	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
 	dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+  dashboard.button("s", icons.ui.SignIn .. "  Find Session", ":silent Autosession search <CR>"),
 	dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
   dashboard.button("u", "ﮮ  Update", ":PackerSync<CR>"),
 	dashboard.button("q", "  Quit Neovim", ":qa<CR>"),

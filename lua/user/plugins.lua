@@ -59,16 +59,29 @@ return packer.startup(function(use)
   -- Lua
   use "norcalli/nvim-colorizer.lua"
   use "windwp/nvim-spectre"
+  use "rmagatti/auto-session"
+  use "ThePrimeagen/harpoon"
+  use "kylechui/nvim-surround"
+  use {
+    "abecodes/tabout.nvim",
+    wants = { "nvim-treesitter" }, -- or require if not used so far
+  }
 
   -- UI
   use "stevearc/dressing.nvim"
-  use { "christianchiarulli/nvim-gps", branch = "text_hl" }
+  -- use { "christianchiarulli/nvim-gps", branch = "text_hl" }
   use "rcarriga/nvim-notify"
   use "folke/which-key.nvim"
   use "goolord/alpha-nvim"
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
   use "tamago324/lir.nvim"
+  use "ghillb/cybu.nvim"
+  use "is0n/jaq-nvim"
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig",
+  }
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
