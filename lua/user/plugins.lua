@@ -136,6 +136,8 @@ return packer.startup(function(use)
   -- Java
   use "mfussenegger/nvim-jdtls"
 
+  use { "christianchiarulli/JABS.nvim" }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
