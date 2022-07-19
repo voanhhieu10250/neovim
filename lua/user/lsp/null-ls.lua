@@ -14,6 +14,7 @@ null_ls.setup({
     formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
     formatting.black.with({ extra_args = { "--fast" } }),
     formatting.stylua,
+    formatting.shfmt,
     formatting.erb_lint,
     formatting.rubocop,
     formatting.google_java_format,
@@ -21,5 +22,6 @@ null_ls.setup({
     diagnostics.rubocop,
     diagnostics.eslint,
     diagnostics.flake8,
+    diagnostics.shellcheck,
   },
 })

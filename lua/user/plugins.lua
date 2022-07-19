@@ -111,6 +111,7 @@ return packer.startup(function(use)
   use "ray-x/lsp_signature.nvim"
   use "folke/trouble.nvim"
   use "nvim-lua/lsp_extensions.nvim"
+  use "christianchiarulli/lsp-inlay-hints"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"

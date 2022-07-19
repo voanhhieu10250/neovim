@@ -3,8 +3,6 @@ if not status_ok then
   return
 end
 
-local lspconfig = require("lspconfig")
-
 local servers = {
   "sumneko_lua",
   "solargraph",
@@ -17,14 +15,39 @@ local servers = {
   "bashls",
   "pyright",
   -- "jdtls",
+  "emmet_ls",
+  "terraformls",
 }
 
-lsp_installer.setup({
+local settings = {
   ensure_installed = servers,
-})
+  ui = {
+    icons = {},
+    keymaps = {
+      toggle_server_expand = "<CR>",
+      install_server = "i",
+      update_server = "u",
+      check_server_version = "c",
+      update_all_servers = "U",
+      check_outdated_servers = "C",
+      uninstall_server = "X",
+    },
+  },
+
+  log_level = vim.log.levels.INFO,
+}
+
+lsp_installer.setup(settings)
+
+local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status_ok then
+  return
+end
+
+local opts = {}
 
 for _, server in pairs(servers) do
-  local opts = {
+  opts = {
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
   }
