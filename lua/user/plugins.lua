@@ -57,10 +57,11 @@ return packer.startup(function(use)
   use "christianchiarulli/hop.nvim"
 
   -- Lua
+  use "folke/lua-dev.nvim"
   use "norcalli/nvim-colorizer.lua"
   use "windwp/nvim-spectre"
   use "rmagatti/auto-session"
-  use "ThePrimeagen/harpoon"
+  use "christianchiarulli/harpoon"
   use "kylechui/nvim-surround"
   use {
     "abecodes/tabout.nvim",
@@ -117,7 +118,8 @@ return packer.startup(function(use)
   use "ray-x/lsp_signature.nvim"
   use "folke/trouble.nvim"
   use "nvim-lua/lsp_extensions.nvim"
-  use "christianchiarulli/lsp-inlay-hints"
+  -- use "christianchiarulli/lsp-inlay-hints"
+  use {"christianchiarulli/lsp-inlayhints.nvim", branch="user-config"}
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"

@@ -35,7 +35,7 @@ M.setup = function()
 		underline = true,
 		severity_sort = true,
 		float = {
-			focusable = false,
+			focusable = true,
 			style = "minimal",
 			border = "rounded",
 			source = "always",
@@ -105,10 +105,17 @@ M.on_attach = function(client, bufnr)
 
 	if client.name == "tsserver" then
 		client.server_capabilities.document_formatting = false
-		require("lsp_inlay_hints").setup_autocmd(bufnr, "typescript/inlayHints")
-	else
-		require("lsp_inlay_hints").setup_autocmd(bufnr)
+    require("lsp-inlayhints").setup_autocmd(bufnr, "typescript/inlayHints")
+	-- 	require("lsp_inlay_hints").setup_autocmd(bufnr, "typescript/inlayHints")
+	-- else
+	-- 	require("lsp_inlay_hints").setup_autocmd(bufnr)
 	end
+
+  if client.name == "pyright" then
+    if client.server_capabilities.inlayHintProvider then
+      require("lsp-inlayhints").setup_autocmd(bufnr)
+    end
+  end
 
 	if client.name == "jdtls" then
 		client.server_capabilities.document_formatting = false
@@ -120,11 +127,12 @@ M.on_attach = function(client, bufnr)
 
 	if client.name == "jdt.ls" then
 		client.server_capabilities.document_formatting = false
+		M.capabilities.textDocument.completion.completionItem.snippetSupport = false
+    vim.lsp.codelens.refresh()
 		if JAVA_DAP_ACTIVE then
 			require("jdtls").setup_dap({ hotcodereplace = "auto" })
 			require("jdtls.dap").setup_dap_main_class_configs()
 		end
-		M.capabilities.textDocument.completion.completionItem.snippetSupport = false
 	end
 end
 

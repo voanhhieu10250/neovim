@@ -93,11 +93,13 @@ local mappings = {
 	[";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	["R"] = { "<cmd>NvimTreeRefresh<cr>", "Refresh Explorer" },
+  ["h"] = { "<cmd>split<cr>", "HSplit" },
+  ["v"] = { "<cmd>vsplit<cr>", "VSplit" },
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 	["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
-	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
+	["H"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
 	p = {
@@ -217,8 +219,8 @@ local mappings = {
 	},
 	-- s = {
 	--   name = "Split",
-	--   s = { "<cmd>split<cr>", "HSplit" },
-	--   v = { "<cmd>vsplit<cr>", "VSplit" },
+	--   s = { "<cmd>split<cr>", "hsplit" },
+	--   v = { "<cmd>vsplit<cr>", "vsplit" },
 	--   q = { "<cmd>:q<cr>", "Close" },
 	-- },
 	S = {

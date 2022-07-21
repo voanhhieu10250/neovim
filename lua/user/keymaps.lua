@@ -29,7 +29,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Tabs --
-keymap("n", "<enter>", ":tabnew %<cr>", opts)
+keymap("n", "<m-t>", ":tabnew %<cr>", opts)
 keymap("n", "<s-enter>", ":tabclose<cr>", opts)
 keymap("n", "<m-\\>", ":tabonly<cr>", opts)
 
@@ -87,18 +87,42 @@ keymap("x", "<A-c>", '"+y', opts)
 keymap("n", "-", ":lua require'lir.float'.toggle()<cr>", opts)
 keymap("n", "=", "<cmd>JABSOpen<cr>", { noremap = true, silent = true, nowait = true })
 keymap("n", "<m-v>", "<cmd>vsplit<cr>", opts)
-keymap("n", "<m-q>", "<cmd>:q<cr>", opts)
-keymap("n", "<tab>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
+-- keymap("n", "<m-q>", "<cmd>:q<cr>", opts)
+-- keymap("n", "<tab>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
+vim.api.nvim_set_keymap(
+	"n",
+	"<tab>",
+	"<cmd>lua require('telescope').extensions.harpoon.marks(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Harpoon'})<cr>",
+	opts
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<s-tab>",
+	"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
+	opts
+)
 M.show_documentation = function()
-  local filetype = vim.bo.filetype
-  if vim.tbl_contains({ "vim", "help" }, filetype) then
-    vim.cmd("h " .. vim.fn.expand "<cword>")
-  elseif vim.tbl_contains({ "man" }, filetype) then
-    vim.cmd("Man " .. vim.fn.expand "<cword>")
-  else
-    vim.lsp.buf.hover()
-  end
+	local filetype = vim.bo.filetype
+	if vim.tbl_contains({ "vim", "help" }, filetype) then
+		vim.cmd("h " .. vim.fn.expand("<cword>"))
+	elseif vim.tbl_contains({ "man" }, filetype) then
+		vim.cmd("Man " .. vim.fn.expand("<cword>"))
+	else
+		vim.lsp.buf.hover()
+	end
 end
 keymap("n", "K", ":lua require('user.keymaps').show_documentation()<CR>", opts)
+
+vim.cmd([[
+  function! QuickFixToggle()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+      copen
+    else
+      cclose
+    endif
+  endfunction
+]])
+
+keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
 
 return M

@@ -51,9 +51,32 @@ for _, server in pairs(servers) do
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
   }
+
+  if server == "sumneko_lua" then
+    local sumneko_opts = require "user.lsp.settings.sumneko_lua"
+    opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+    -- opts = vim.tbl_deep_extend("force", require("lua-dev").setup(), opts)
+    local luadev = require("lua-dev").setup {
+      --   -- add any options here, or leave empty to use the default settings
+      -- lspconfig = opts,
+      lspconfig = {
+        on_attach = opts.on_attach,
+        capabilities = opts.capabilities,
+      --   -- settings = opts.settings,
+      },
+    }
+    lspconfig.sumneko_lua.setup(luadev)
+    goto continue
+  end
+
+  if server == "jdtls" then
+    goto continue
+  end
+
   local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server)
   if has_custom_opts then
     opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
   end
   lspconfig[server].setup(opts)
+  ::continue::
 end
