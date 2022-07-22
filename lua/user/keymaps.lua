@@ -30,7 +30,7 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Tabs --
 keymap("n", "<m-t>", ":tabnew %<cr>", opts)
-keymap("n", "<s-enter>", ":tabclose<cr>", opts)
+keymap("n", "<m-y>", ":tabclose<cr>", opts)
 keymap("n", "<m-\\>", ":tabonly<cr>", opts)
 
 -- Resize with arrows
@@ -104,8 +104,10 @@ vim.api.nvim_set_keymap(
 M.show_documentation = function()
 	local filetype = vim.bo.filetype
 	if vim.tbl_contains({ "vim", "help" }, filetype) then
+---@diagnostic disable-next-line: missing-parameter
 		vim.cmd("h " .. vim.fn.expand("<cword>"))
 	elseif vim.tbl_contains({ "man" }, filetype) then
+---@diagnostic disable-next-line: missing-parameter
 		vim.cmd("Man " .. vim.fn.expand("<cword>"))
 	else
 		vim.lsp.buf.hover()

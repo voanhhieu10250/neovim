@@ -23,6 +23,7 @@ local settings = {
   ensure_installed = servers,
   ui = {
     icons = {},
+    border = "rounded",
     keymaps = {
       toggle_server_expand = "<CR>",
       install_server = "i",
@@ -53,10 +54,14 @@ for _, server in pairs(servers) do
   }
 
   if server == "sumneko_lua" then
+    local l_status_ok, lua_dev = pcall(require, "lua-dev")
+    if not l_status_ok then
+      return
+    end
     local sumneko_opts = require "user.lsp.settings.sumneko_lua"
     opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
     -- opts = vim.tbl_deep_extend("force", require("lua-dev").setup(), opts)
-    local luadev = require("lua-dev").setup {
+    local luadev = lua_dev.setup {
       --   -- add any options here, or leave empty to use the default settings
       -- lspconfig = opts,
       lspconfig = {

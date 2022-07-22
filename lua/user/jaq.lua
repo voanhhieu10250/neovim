@@ -41,36 +41,10 @@ jaq_nvim.setup {
 
     -- Auto-save files
     autosave = false,
-
-    -- position = "vert",
-
-    -- Open the terminal without line numbers
-    -- line_no = false,
-  },
-  terminal = {
-    -- Window position
-    position = "vert",
-
-    -- Window size
-    size = 60,
-
-    -- Disable line numbers
-    line_no = false,
   },
 
   -- UI settings
   ui = {
-    -- Start in insert mode
-    startinsert = false,
-
-    -- Switch back to current file
-    -- after using Jaq
-    wincmd = false,
-
-    -- Auto-save the current file
-    -- before executing it
-    autosave = true,
-
     -- Floating Window / FTerm settings
     float = {
       -- Floating window border (see ':h nvim_open_win')

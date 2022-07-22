@@ -2,6 +2,7 @@ local fn = vim.fn
 
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+---@diagnostic disable-next-line: missing-parameter
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
     "git",
@@ -61,6 +62,7 @@ return packer.startup(function(use)
   use "norcalli/nvim-colorizer.lua"
   use "windwp/nvim-spectre"
   use "rmagatti/auto-session"
+  use "rmagatti/session-lens"
   use "christianchiarulli/harpoon"
   use "kylechui/nvim-surround"
   use {
@@ -145,7 +147,7 @@ return packer.startup(function(use)
   -- Java
   use "mfussenegger/nvim-jdtls"
 
-  use { "christianchiarulli/JABS.nvim" }
+  -- use { "christianchiarulli/JABS.nvim" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
