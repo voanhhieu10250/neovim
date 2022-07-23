@@ -56,6 +56,7 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "christianchiarulli/hop.nvim"
+  use { "semanticart/ruby-code-actions.nvim", requires = "nvim-lua/plenary.nvim" }
 
   -- Lua
   use "folke/lua-dev.nvim"
@@ -121,7 +122,7 @@ return packer.startup(function(use)
   use "folke/trouble.nvim"
   use "nvim-lua/lsp_extensions.nvim"
   -- use "christianchiarulli/lsp-inlay-hints"
-  use {"christianchiarulli/lsp-inlayhints.nvim", branch="user-config"}
+  use { "christianchiarulli/lsp-inlayhints.nvim", branch = "user-config" }
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
