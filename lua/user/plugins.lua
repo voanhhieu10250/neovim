@@ -43,57 +43,26 @@ packer.init {
 return packer.startup(function(use)
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+
+  -- Lua Development
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  use "numToStr/Comment.nvim" -- Easily comment stuff
-  use "akinsho/bufferline.nvim"
-  use "moll/vim-bbye"
-  use "nvim-lualine/lualine.nvim"
-  use "akinsho/toggleterm.nvim"
-  use "ahmedkhalf/project.nvim"
-  use "lewis6991/impatient.nvim"
-  use "lukas-reineke/indent-blankline.nvim"
-  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-  use "christianchiarulli/hop.nvim"
+  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+  use "folke/lua-dev.nvim"
+
+  -- LSP
+  use "neovim/nvim-lspconfig" -- enable LSP
+  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "ray-x/lsp_signature.nvim"
+  use "SmiteshP/nvim-navic"
+  use "simrat39/symbols-outline.nvim"
+  use "RRethy/vim-illuminate"
+  use "j-hui/fidget.nvim"
+  use { "christianchiarulli/lsp-inlayhints.nvim", branch = "user-config" }
+  use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
   use { "semanticart/ruby-code-actions.nvim", requires = "nvim-lua/plenary.nvim" }
 
-  -- Lua
-  use "folke/lua-dev.nvim"
-  use "norcalli/nvim-colorizer.lua"
-  use "windwp/nvim-spectre"
-  use "rmagatti/auto-session"
-  use "rmagatti/session-lens"
-  use "christianchiarulli/harpoon"
-  use "kylechui/nvim-surround"
-  use {
-    "abecodes/tabout.nvim",
-    wants = { "nvim-treesitter" }, -- or require if not used so far
-  }
-
-  -- UI
-  use "stevearc/dressing.nvim"
-  -- use { "christianchiarulli/nvim-gps", branch = "text_hl" }
-  use "rcarriga/nvim-notify"
-  use "folke/which-key.nvim"
-  use "goolord/alpha-nvim"
-  use "kyazdani42/nvim-web-devicons"
-  use "kyazdani42/nvim-tree.lua"
-  use "tamago324/lir.nvim"
-  use "ghillb/cybu.nvim"
-  use "is0n/jaq-nvim"
-  use {
-    "SmiteshP/nvim-navic",
-    requires = "neovim/nvim-lspconfig",
-  }
-
-  -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "folke/tokyonight.nvim"
-  use "lunarvim/darkplus.nvim"
-  use "lunarvim/onedarker.nvim"
-
-  -- cmp plugins
+  -- Completion
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
@@ -104,50 +73,125 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-emoji"
   use {
     "tzachar/cmp-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
+    run = "./install.sh"
   }
 
-  -- snippets
+  -- Snippet
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-  -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use "RRethy/vim-illuminate"
-  use "ray-x/lsp_signature.nvim"
-  use "folke/trouble.nvim"
-  use "nvim-lua/lsp_extensions.nvim"
-  -- use "christianchiarulli/lsp-inlay-hints"
-  use { "christianchiarulli/lsp-inlayhints.nvim", branch = "user-config" }
+  -- Syntax/Treesitter
+  use "nvim-treesitter/nvim-treesitter"
+  use "JoosepAlviste/nvim-ts-context-commentstring"
+  use "p00f/nvim-ts-rainbow"
+  use "nvim-treesitter/playground"
+  use "windwp/nvim-ts-autotag"
+  use "nvim-treesitter/nvim-treesitter-textobjects"
+  -- use "wellle/targets.vim"
+  -- use "RRethy/nvim-treesitter-textsubjects"
+  use "kylechui/nvim-surround"
+  use {
+    "abecodes/tabout.nvim",
+    wants = { "nvim-treesitter" }, -- or require if not used so far
+  }
 
-  -- Telescope
+  -- Marks
+  use "christianchiarulli/harpoon"
+
+  -- Fuzzy Finder/Telescope
   use "nvim-telescope/telescope.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
 
-  -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
-  use "windwp/nvim-ts-autotag"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
-  -- use "p00f/nvim-ts-rainbow"
+  -- Color
+  use "norcalli/nvim-colorizer.lua"
+  use "ziontee113/color-picker.nvim"
+
+  -- Colorschemes
+  use "lunarvim/onedarker.nvim"
+  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  -- use "folke/tokyonight.nvim"
+  -- use "lunarvim/darkplus.nvim"
+
+  -- Utility
+  use "rcarriga/nvim-notify"
+  use "stevearc/dressing.nvim"
+  use "ghillb/cybu.nvim"
+  use "moll/vim-bbye"
+  use "lewis6991/impatient.nvim"
+
+  -- Registers
+  use "tversteeg/registers.nvim"
+
+  -- Icon
+  use "kyazdani42/nvim-web-devicons"
+
+  -- Debugging
+  use "mfussenegger/nvim-dap"
+  use "rcarriga/nvim-dap-ui"
+  -- use "ravenxrz/DAPInstall.nvim"
+
+  -- Statusline
+  use "christianchiarulli/lualine.nvim"
+
+  -- Startup
+  use "goolord/alpha-nvim"
+
+  -- Indent
+  use "lukas-reineke/indent-blankline.nvim"
+
+  -- File Explorer
+  use "kyazdani42/nvim-tree.lua"
+  use "tamago324/lir.nvim"
+
+  -- Comment
+  use "numToStr/Comment.nvim" -- Easily comment stuff
+
+  -- Terminal
+  use "akinsho/toggleterm.nvim"
+
+  -- Project
+  use "ahmedkhalf/project.nvim"
+  use "windwp/nvim-spectre"
+
+  -- Session
+  use "rmagatti/auto-session"
+  use "rmagatti/session-lens"
+
+  -- Quickfix
+  use "kevinhwang91/nvim-bqf"
+
+  -- Code Runner
+  use "is0n/jaq-nvim"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
 
-  -- DAP
-  use "mfussenegger/nvim-dap"
-  use "rcarriga/nvim-dap-ui"
-  use "ravenxrz/DAPInstall.nvim"
+  -- Editting Support
+  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+  use "andymass/vim-matchup"
+  use "karb94/neoscroll.nvim"
+
+  -- Motion
+  use "christianchiarulli/hop.nvim"
+
+  -- Keybinding
+  use "folke/which-key.nvim"
 
   -- Java
   use "mfussenegger/nvim-jdtls"
 
+  -- Typescript TODO: set this up, also add keybinds to ftplugin
+  use "jose-elias-alvarez/typescript.nvim"
+
+  -- Tabline
+  -- use "akinsho/bufferline.nvim"
+
+  -- Graveyard
+  -- use { "christianchiarulli/nvim-gps", branch = "text_hl" }
+  -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+  -- use "folke/trouble.nvim"
+  -- use "nvim-lua/lsp_extensions.nvim"
+  -- use "christianchiarulli/lsp-inlay-hints"
   -- use { "christianchiarulli/JABS.nvim" }
 
   -- Automatically set up your configuration after cloning packer.nvim

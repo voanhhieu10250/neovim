@@ -86,7 +86,7 @@ keymap("x", "<A-c>", '"+y', opts)
 -- Custom
 keymap("n", "-", ":lua require'lir.float'.toggle()<cr>", opts)
 keymap("n", "=", "<cmd>JABSOpen<cr>", { noremap = true, silent = true, nowait = true })
-keymap("n", "<m-v>", "<cmd>vsplit<cr>", opts)
+keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
 -- keymap("n", "<m-q>", "<cmd>:q<cr>", opts)
 -- keymap("n", "<tab>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
 vim.api.nvim_set_keymap(
@@ -126,5 +126,6 @@ vim.cmd([[
 ]])
 
 keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
+keymap("n", "<c-l>", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
 
 return M
