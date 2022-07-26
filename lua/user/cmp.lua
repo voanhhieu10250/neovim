@@ -31,38 +31,9 @@ local icons = require "user.icons"
 
 local kind_icons = icons.kind
 
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
 vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
-
---   פּ ﯟ   some other good icons
--- local kind_icons = {
---   Text = "",
---   Method = "m",
---   Function = "",
---   Constructor = "",
---   Field = "",
---   Variable = "",
---   Class = "",
---   Interface = "",
---   Module = "",
---   Property = "",
---   Unit = "",
---   Value = "",
---   Enum = "",
---   Keyword = "",
---   Snippet = "",
---   Color = "",
---   File = "",
---   Reference = "",
---   Folder = "",
---   EnumMember = "",
---   Constant = "",
---   Struct = "",
---   Event = "",
---   Operator = "",
---   TypeParameter = "",
--- }
--- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup {
   snippet = {
@@ -76,6 +47,7 @@ cmp.setup {
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<m-o>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     -- ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
     ["<C-e>"] = cmp.mapping {
       i = cmp.mapping.abort(),
@@ -128,6 +100,11 @@ cmp.setup {
         vim_item.kind_hl_group = "CmpItemKindTabnine"
       end
 
+      if entry.source.name == "copilot" then
+        vim_item.kind = icons.git.Octoface
+        vim_item.kind_hl_group = "CmpItemKindCopilot"
+      end
+
       if entry.source.name == "emoji" then
         vim_item.kind = icons.misc.Smiley
         vim_item.kind_hl_group = "CmpItemKindEmoji"
@@ -146,8 +123,20 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = "nvim_lsp", group_index = 2 },
+    {
+      name = "nvim_lsp",
+      filter = function(entry, ctx)
+        vim.pretty_print()
+        local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
+        -- vim.bo.filetype
+        if kind == "Snippet" and ctx.prev_context.filetype == "java" then
+          return true
+        end
+      end,
+      group_index = 2,
+    },
     { name = "nvim_lua", group_index = 2 },
+    { name = "copilot", group_index = 2 },
     { name = "luasnip", group_index = 2 },
     { name = "buffer", group_index = 2 },
     { name = "cmp_tabnine", group_index = 2 },
@@ -183,11 +172,11 @@ cmp.setup {
   window = {
     documentation = {
       border = "rounded",
-      -- winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
+      winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
     },
     completion = {
       border = "rounded",
-      -- winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
+      winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
     },
   },
 }
