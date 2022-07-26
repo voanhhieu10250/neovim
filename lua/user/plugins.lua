@@ -47,11 +47,14 @@ return packer.startup(function(use)
   -- Lua Development
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "folke/lua-dev.nvim"
+  use "christianchiarulli/lua-dev.nvim"
+  -- use "folke/lua-dev.nvim"
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "ray-x/lsp_signature.nvim"
   use "SmiteshP/nvim-navic"
@@ -68,12 +71,12 @@ return packer.startup(function(use)
     end,
   }
   use "j-hui/fidget.nvim"
-  use { "christianchiarulli/lsp-inlayhints.nvim", branch = "user-config" }
+  use { "lvimuser/lsp-inlayhints.nvim", branch = "readme" }
   use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
   use { "semanticart/ruby-code-actions.nvim", requires = "nvim-lua/plenary.nvim" }
 
   -- Completion
-  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "christianchiarulli/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
