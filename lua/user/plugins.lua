@@ -34,6 +34,7 @@ end
 packer.init {
   -- snapshot = "july-26-2022",
   snapshot_path = fn.stdpath "config" .. "/snapshots",
+  max_jobs = 50,
   display = {
     open_fn = function()
       return require("packer.util").float { border = "rounded" }
@@ -158,7 +159,7 @@ return packer.startup(function(use)
 
   -- File Explorer
   use "kyazdani42/nvim-tree.lua"
-  use "tamago324/lir.nvim"
+  use "christianchiarulli/lir.nvim"
 
   -- Comment
   use "numToStr/Comment.nvim" -- Easily comment stuff
