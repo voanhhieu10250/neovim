@@ -36,6 +36,7 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
+  title = true,
 }
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
@@ -48,6 +49,7 @@ vim.opt.fillchars:append {
 }
 
 vim.opt.shortmess:append "c"
+vim.opt.titlestring = "%t"
 
 for k, v in pairs(options) do
   vim.opt[k] = v
