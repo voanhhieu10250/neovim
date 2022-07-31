@@ -124,6 +124,15 @@ cmp.setup {
   },
   sources = {
     {
+      name = "copilot",
+      -- keyword_length = 1,
+      max_item_count = 3,
+      trigger_characters = {
+        { ".", ":", "(", "'", '"', "[", ",", "#", "*", "@", "|", "=", "-", "{", "/", "\\", "+", "?" },
+      },
+      group_index = 2,
+    },
+    {
       name = "nvim_lsp",
       filter = function(entry, ctx)
         -- vim.pretty_print()
@@ -136,7 +145,6 @@ cmp.setup {
       group_index = 2,
     },
     { name = "nvim_lua", group_index = 2 },
-    { name = "copilot", keyword_length = 1, group_index = 2 },
     { name = "luasnip", group_index = 2 },
     { name = "buffer", group_index = 2 },
     { name = "cmp_tabnine", group_index = 2 },
