@@ -75,7 +75,7 @@ return packer.startup(function(use)
     end,
   }
   use "j-hui/fidget.nvim"
-  use { "lvimuser/lsp-inlayhints.nvim", branch = "readme" }
+  use "lvimuser/lsp-inlayhints.nvim"
   use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
   use { "semanticart/ruby-code-actions.nvim", requires = "nvim-lua/plenary.nvim" }
 

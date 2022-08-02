@@ -207,7 +207,6 @@ local filetype = {
     else
       return return_val(str)
     end
-    return return_val(str)
   end,
   icons_enabled = false,
   padding = 0,
