@@ -192,6 +192,8 @@ local mappings = {
 		F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+    h = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle Hints" },
+    H = { "<cmd>IlluminationToggle<cr>", "Toggle Doc HL" },
 		j = {
 			"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
 			"Next Diagnostic",
