@@ -126,9 +126,9 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use "lunarvim/onedarker.nvim"
+  use "lunarvim/darkplus.nvim"
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   -- use "folke/tokyonight.nvim"
-  -- use "lunarvim/darkplus.nvim"
 
   -- Utility
   use "rcarriga/nvim-notify"

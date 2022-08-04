@@ -33,9 +33,12 @@ configs.setup({
 	rainbow = {
 		enable = true,
     colors ={
-      "#68a0b0",
-      "#946EaD",
-      "#c7aA6D",
+      -- "#68a0b0",
+      -- "#946EaD",
+      -- "#c7aA6D",
+      "Gold",
+      "Orchid",
+      "DodgerBlue",
     },
 		-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
 		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean

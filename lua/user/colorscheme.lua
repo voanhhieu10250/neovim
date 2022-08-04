@@ -1,6 +1,6 @@
-local colorscheme = "onedarker"
+-- local colorscheme = "onedarker"
 -- local colorscheme = "tokyonight"
--- local colorscheme = "darkplus"
+local colorscheme = "darkplus"
 
 vim.g.onedarker_italic_keywords = false
 
