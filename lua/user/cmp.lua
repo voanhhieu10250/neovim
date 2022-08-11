@@ -51,7 +51,17 @@ vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
 vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
+vim.g.cmp_active = true
+
 cmp.setup {
+  enabled = function ()
+    local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+    if buftype == "prompt" then
+      return false
+    end
+    return vim.g.cmp_active
+  end,
+  preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -141,11 +151,11 @@ cmp.setup {
   sources = {
     {
       name = "copilot",
-      -- keyword_length = 1,
+      -- keyword_length = 0,
       max_item_count = 3,
-      trigger_characters = {
-        { ".", ":", "(", "'", '"', "[", ",", "#", "*", "@", "|", "=", "-", "{", "/", "\\", "+", "?" },
-      },
+      -- trigger_characters = {
+      --   { ".", ":", "(", "'", '"', "[", ",", "#", "*", "@", "|", "=", "-", "{", "/", "\\", "+", "?", " ", "\t", "\n" },
+      -- },
       group_index = 2,
     },
     {

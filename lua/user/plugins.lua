@@ -173,7 +173,7 @@ return packer.startup(function(use)
   use "windwp/nvim-spectre"
 
   -- Session
-  use "rmagatti/auto-session"
+  use {"rmagatti/auto-session", branch="dir-changed-fixes"}
   use "rmagatti/session-lens"
 
   -- Quickfix
