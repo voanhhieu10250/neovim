@@ -32,7 +32,7 @@ end
 
 -- Have packer use a popup window
 packer.init {
-  -- snapshot = "july-26-2022",
+  -- snapshot = "august-30-2022",
   snapshot_path = fn.stdpath "config" .. "/snapshots",
   max_jobs = 50,
   display = {
@@ -173,7 +173,7 @@ return packer.startup(function(use)
   use "windwp/nvim-spectre"
 
   -- Session
-  use {"rmagatti/auto-session", branch="dir-changed-fixes"}
+  use "rmagatti/auto-session"
   use "rmagatti/session-lens"
 
   -- Quickfix

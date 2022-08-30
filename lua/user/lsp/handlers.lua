@@ -70,14 +70,6 @@ M.setup = function()
 	})
 end
 
-local function lsp_highlight_document(client)
-	local status_illuminate_ok, illuminate = pcall(require, "illuminate")
-	if not status_illuminate_ok then
-		return
-	end
-	illuminate.on_attach(client)
-end
-
 local function attach_navic(client, bufnr)
 	vim.g.navic_silence = true
 	local status_navic_ok, navic = pcall(require, "nvim-navic")
@@ -110,12 +102,11 @@ end
 
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
-	lsp_highlight_document(client)
 	attach_navic(client, bufnr)
 
 	if client.name == "tsserver" then
 		client.server_capabilities.document_formatting = false
-    require("lsp-inlayhints").on_attach(bufnr, client)
+    require("lsp-inlayhints").on_attach(client, bufnr)
 	end
 
 	if client.name == "jdtls" then

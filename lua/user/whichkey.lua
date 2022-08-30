@@ -96,7 +96,7 @@ local mappings = {
   ["V"] = { "<cmd>vsplit<cr>", "VSplit" },
   v = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Virtual Text" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-	["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
+	["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
