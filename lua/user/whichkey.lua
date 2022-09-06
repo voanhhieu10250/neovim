@@ -99,6 +99,7 @@ local mappings = {
 	["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+	["C"] = { '<cmd>lua require("user.system-clipboard").TOGGLE_G_CLIPBOARD()<CR>', "Toggle Clipboard Tool" },
 
 	p = {
 		name = "Packer",
