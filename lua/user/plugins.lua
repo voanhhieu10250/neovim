@@ -32,7 +32,7 @@ end
 
 -- Have packer use a popup window
 packer.init {
-  -- snapshot = "august-30-2022",
+  -- snapshot = "september-2-2022",
   snapshot_path = fn.stdpath "config" .. "/snapshots",
   max_jobs = 50,
   display = {
@@ -123,7 +123,8 @@ return packer.startup(function(use)
 
   -- Color
   use "norcalli/nvim-colorizer.lua"
-  use "ziontee113/color-picker.nvim"
+  -- use "ziontee113/color-picker.nvim"
+  use "nvim-colortils/colortils.nvim"
 
   -- Colorschemes
   use "lunarvim/onedarker.nvim"
