@@ -61,9 +61,6 @@ keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
 
--- Copy from nvim to clipboard
--- (use Shift-Insert or Ctrl-Shift-v for parse text from clipboard to nvim)
-keymap("v", "<leader-y>", '"+y', opts)
 
 -- Visual Block --
 -- Move text up and down
@@ -72,9 +69,6 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- Copy from nvim to clipboard
--- (use Shift-Insert or Ctrl-Shift-v for parse text from clipboard to nvim)
-keymap("x", "<leader>y", '"+y', opts)
 
 -- Terminal --
 -- Better terminal navigation

@@ -28,7 +28,9 @@ M.winbar_filetype_exclude = {
 }
 
 local get_filename = function()
+---@diagnostic disable-next-line: missing-parameter
 	local filename = vim.fn.expand("%:t")
+---@diagnostic disable-next-line: missing-parameter
 	local extension = vim.fn.expand("%:e")
 	local f = require("user.functions")
 

@@ -84,7 +84,7 @@ local mappings = {
 	-- b = { "<cmd>lua require('user.bfs').open()<cr>", "Buffers" },
   b = { "<cmd>Telescope buffers<cr>", "Buffers" },
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-	["w"] = { "<cmd>w!<CR>", "Write" },
+	["w"] = { "<cmd>w!<CR>", "Write (Save)" },
 	["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
 	m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
 	["."] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', "Harpoon Next" },
@@ -99,7 +99,7 @@ local mappings = {
 	["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-	["C"] = { '<cmd>lua require("user.system-clipboard").TOGGLE_G_CLIPBOARD()<CR>', "Toggle Clipboard Tool" },
+	-- ["C"] = { '<cmd>lua require("user.system-clipboard").TOGGLE_G_CLIPBOARD()<CR>', "Toggle Clipboard Tool" },
 
 	p = {
 		name = "Packer",

@@ -53,6 +53,7 @@ vim.cmd([[ command! SnipRunToggle execute 'lua require("user.functions").toggle_
 
 -- get length of current word
 function M.get_word_length()
+---@diagnostic disable-next-line: missing-parameter
 	local word = vim.fn.expand("<cword>")
 	return #word
 end
