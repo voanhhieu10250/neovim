@@ -93,4 +93,14 @@ npm run build-plugin
 \- Edsger W. Dijkstra
 
 
+## Note
+
 If you're using WSL on windows then to install [win32yank.exe](https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl:~:text=If%20Neovim%20is%20only%20installed%20within%20our%20WSL%20distribution%2C%20we%20can%20just%20install%20win32yank.exe%20manually%3A) in order for neovim to work with system clipboard.
+
+
+
+**Install for java:**
+
+[java-debug](https://github.com/mfussenegger/nvim-jdtls#java-debug-installation:~:text=.test_nearest_method()-,java%2Ddebug%20installation,-Clone%20java%2Ddebug) installation
+
+[vscode-java-test](https://github.com/mfussenegger/nvim-jdtls#java-debug-installation:~:text=vscode%2Djava%2Dtest%20installation) installation
