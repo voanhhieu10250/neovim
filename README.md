@@ -91,3 +91,6 @@ npm run build-plugin
 > The computing scientist's main challenge is not to get confused by the complexities of his own making. 
 
 \- Edsger W. Dijkstra
+
+
+If you're using WSL on windows then to install (win32yank.exe)[https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl:~:text=If%20Neovim%20is%20only%20installed%20within%20our%20WSL%20distribution%2C%20we%20can%20just%20install%20win32yank.exe%20manually%3A] in order to for neovim to work with system clipboard.
