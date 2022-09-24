@@ -1,6 +1,11 @@
 # My Neovim Config
 
-I'm not the author of the original configuration. I followed a tutorial on Youtube to custom this configuration, great [channel](https://www.youtube.com/c/ChrisAtMachine) about neovim.
+I highly recommend that if you're using Windows then install **WSL**. 
+
+**DON'T** use this Neovim config if you don't have Linux !!
+
+If you still want to use Neovim on PowerShell then use [LunarVim](https://github.com/LunarVim/LunarVim) instead !
+
 
 ## Try out this config
 
@@ -14,6 +19,12 @@ git clone https://github.com/voanhhieu10250/neovim-configuration.git ~/.config/n
 Run `nvim` and wait for the plugins to be installed 
 
 **NOTE** (You will notice treesitter pulling in a bunch of parsers the next time you open Neovim) 
+
+
+## Note
+
+If you're using WSL on windows then to install [win32yank.exe](https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl:~:text=If%20Neovim%20is%20only%20installed%20within%20our%20WSL%20distribution%2C%20we%20can%20just%20install%20win32yank.exe%20manually%3A) in order for neovim to work with system clipboard.
+
 
 ## Get healthy
 
@@ -93,14 +104,8 @@ npm run build-plugin
 \- Edsger W. Dijkstra
 
 
-## Note
+## References & Credit
 
-If you're using WSL on windows then to install [win32yank.exe](https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl:~:text=If%20Neovim%20is%20only%20installed%20within%20our%20WSL%20distribution%2C%20we%20can%20just%20install%20win32yank.exe%20manually%3A) in order for neovim to work with system clipboard.
+[ChristianChiarulli/nvim](https://github.com/ChristianChiarulli/nvim)
 
-
-
-**Install for java:**
-
-[java-debug](https://github.com/mfussenegger/nvim-jdtls#java-debug-installation:~:text=.test_nearest_method()-,java%2Ddebug%20installation,-Clone%20java%2Ddebug) installation
-
-[vscode-java-test](https://github.com/mfussenegger/nvim-jdtls#java-debug-installation:~:text=vscode%2Djava%2Dtest%20installation) installation
+[chris@machine](https://www.youtube.com/c/ChrisAtMachine)
