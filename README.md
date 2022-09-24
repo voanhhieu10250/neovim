@@ -11,7 +11,7 @@ If you still want to use Neovim on PowerShell then use [LunarVim](https://github
 
 Make sure to remove or move your current `nvim` directory
 
-**IMPORTANT** Requires Neovim v0.8 or above
+**IMPORTANT** Requires [Neovim](https://github.com/neovim/neovim#:~:text=%2C%20and%20more!-,Install%20from%20source,-See%20the%20Building) v0.8 or above
 ```
 git clone https://github.com/voanhhieu10250/neovim-configuration.git ~/.config/nvim
 ```
