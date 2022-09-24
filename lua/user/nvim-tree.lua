@@ -1,3 +1,5 @@
+-- type 'g?' in the tree folder for keymaps help
+
 -- following options are he default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 
