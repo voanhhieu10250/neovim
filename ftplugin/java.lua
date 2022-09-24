@@ -91,9 +91,8 @@ local config = {
 		"-jar",
 		---@diagnostic disable-next-line: missing-parameter
 		vim.fn.glob(home .. "/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
-		-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
-		-- Must point to the                                                     Change this to
-		-- eclipse.jdt.ls installation                                           the actual version
+    --                                                                       ^^^^^^^^^^^^^^
+	  -- Remember to install jdtls through lsp first, so that we can have org.eclipse.jdt.ls installation
 
 		-- 💀
 		"-configuration",

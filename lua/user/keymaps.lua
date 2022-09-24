@@ -23,10 +23,10 @@ keymap("n", "<C-i>", "<C-i>", opts)
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<m-h>", "<C-w>h", opts)
+keymap("n", "<m-j>", "<C-w>j", opts)
+keymap("n", "<m-k>", "<C-w>k", opts)
+keymap("n", "<m-l>", "<C-w>l", opts)
 
 -- Tabs --
 keymap("n", "<m-t>", ":tabnew %<cr>", opts)
@@ -43,7 +43,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- keymap("n", "<S-l>", ":bnext<CR>", opts)
 -- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- Move text up and down
+-- Move text up and down when in NORMAL mode
 -- keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 -- keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
@@ -78,9 +78,8 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Custom
-keymap("n", "-", ":lua require'lir.float'.toggle()<cr>", opts)
-keymap("n", "=", "<cmd>JABSOpen<cr>", { noremap = true, silent = true, nowait = true })
-keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
+keymap("n", "-", ":lua require('lir.float').toggle()<cr>", opts)
+-- keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
 -- keymap("n", "<m-q>", "<cmd>:q<cr>", opts)
 -- keymap("n", "<tab>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
 vim.api.nvim_set_keymap(
@@ -95,6 +94,7 @@ vim.api.nvim_set_keymap(
 	"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
 	opts
 )
+
 M.show_documentation = function()
 	local filetype = vim.bo.filetype
 	if vim.tbl_contains({ "vim", "help" }, filetype) then
@@ -109,17 +109,17 @@ M.show_documentation = function()
 end
 keymap("n", "K", ":lua require('user.keymaps').show_documentation()<CR>", opts)
 
-vim.cmd([[
-  function! QuickFixToggle()
-    if empty(filter(getwininfo(), 'v:val.quickfix'))
-      copen
-    else
-      cclose
-    endif
-  endfunction
-]])
+-- vim.cmd([[
+--   function! QuickFixToggle()
+--     if empty(filter(getwininfo(), 'v:val.quickfix'))
+--       copen
+--     else
+--       cclose
+--     endif
+--   endfunction
+-- ]])
+-- keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
 
-keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
-keymap("n", "<c-l>", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
+-- keymap("n", "<c-l>", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
 
 return M

@@ -79,27 +79,49 @@ local opts = {
 	nowait = true, -- use `nowait` when creating keymaps
 }
 
+local m_opts = {
+  mode = "n", -- NORMAL mode
+  prefix = "m",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+local m_mappings = {
+  a = { "<cmd>silent BookmarkAnnotate<cr>", "Bookmark Annotate" },
+  c = { "<cmd>silent BookmarkClear<cr>", "Clear Bookmark" },
+  b = { "<cmd>silent BookmarkToggle<cr>", "Toggle Bookmark" },
+  m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Toggle Harpoon" },
+  ["."] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', "Harpoon Next" },
+  [","] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', "Harpoon Prev" },
+  l = { "<cmd>lua require('user.bfs').open()<cr>", "Buffers" },
+  j = { "<cmd>silent BookmarkNext<cr>", "Next Bookmark" },
+  s = { "<cmd>Telescope harpoon marks<cr>", "Search Harpoon Files" },
+  k = { "<cmd>silent BookmarkPrev<cr>", "Prev Bookmark" },
+  S = { "<cmd>silent BookmarkShowAll<cr>", "Show All Bookmark" },
+  -- s = {
+  --   "<cmd>lua require('telescope').extensions.vim_bookmarks.all({ hide_filename=false, prompt_title=\"bookmarks\", shorten_path=false })<cr>",
+  --   "Show",
+  -- },
+  x = { "<cmd>BookmarkClearAll<cr>", "Clear All Bookmark" },
+  [";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
+}
+
 local mappings = {
 	["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-	-- b = { "<cmd>lua require('user.bfs').open()<cr>", "Buffers" },
-  b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+  ["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	["w"] = { "<cmd>w!<CR>", "Write (Save)" },
 	["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
-	m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
-	["."] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', "Harpoon Next" },
-	[","] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', "Harpoon Prev" },
-	s = { "<cmd>Telescope harpoon marks<cr>", "Search Files" },
-	[";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
 	["R"] = { "<cmd>NvimTreeRefresh<cr>", "Refresh Explorer" },
   ["H"] = { "<cmd>split<cr>", "HSplit" },
   ["V"] = { "<cmd>vsplit<cr>", "VSplit" },
-  v = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Virtual Text" },
+  ["v"] = { "<cmd>lua require('lsp_lines').toggle()<cr>", "Toggle LSP lines" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 	["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-	-- ["C"] = { '<cmd>lua require("user.system-clipboard").TOGGLE_G_CLIPBOARD()<CR>', "Toggle Clipboard Tool" },
 
 	p = {
 		name = "Packer",
@@ -186,12 +208,11 @@ local mappings = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     c = { "<cmd>lua require('user.lsp').server_capabilities()<cr>", "Get Capabilities" },
-		-- d = { "<cmd>TroubleToggle<cr>", "Diagnostics" },
 		f = { "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format" },
 		F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
-		i = { "<cmd>LspInfo<cr>", "Info" },
+		i = { "<cmd>LspInfo<cr>", "LSP Info" },
 		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-    h = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle Hints" },
+    h = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Toggle Inlayhints" },
     H = { "<cmd>IlluminationToggle<cr>", "Toggle Doc HL" },
 		j = {
 			"<cmd>lua vim.diagnostic.goto_next()<CR>",
@@ -201,12 +222,16 @@ local mappings = {
 			"<cmd>lua vim.diagnostic.goto_prev()<cr>",
 			"Prev Diagnostic",
 		},
+		K = {
+			"<cmd>lua require('user.keymaps').show_documentation()<cr>",
+			"Show Documentation (Hover)",
+		},
 		-- c = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
 		l = { "<cmd>lua vim.diagnostic.open_float({ border = 'rounded' })<cr>", "Show diagnostic" },
 		o = { "<cmd>SymbolsOutline<cr>", "Outline" },
 		q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-		-- R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
+		R = { "<cmd>Telescope lsp_references<CR>", "References" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 		S = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
@@ -215,12 +240,12 @@ local mappings = {
 		t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
 		u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
 	},
-	-- s = {
-	--   name = "Split",
-	--   s = { "<cmd>split<cr>", "hsplit" },
-	--   v = { "<cmd>vsplit<cr>", "vsplit" },
-	--   q = { "<cmd>:q<cr>", "Close" },
-	-- },
+	s = {
+	  name = "Split",
+	  s = { "<cmd>split<cr>", "hsplit" },
+	  v = { "<cmd>vsplit<cr>", "vsplit" },
+	  q = { "<cmd>:q<cr>", "Close" },
+	},
 	S = {
 		name = "Session",
 		s = { "<cmd>SaveSession<cr>", "Save" },
@@ -245,5 +270,20 @@ local mappings = {
 	},
 }
 
+local vopts = {
+  mode = "v", -- VISUAL mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+local vmappings = {
+  ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
+  -- s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" }, -- use this when we have SnipRun installed
+}
+
 which_key.setup(setup)
 which_key.register(mappings, opts)
+which_key.register(vmappings, vopts)
+which_key.register(m_mappings, m_opts)
