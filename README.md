@@ -101,7 +101,11 @@ npm install
 npm run build-plugin
 ```
 
-**NOTE:** You should use [Sdkman](https://sdkman.io/) to manage java versions. Please make sure that your java version is at least **version 17 or above**.
+**NOTE:** 
+
+- You should use [Sdkman](https://sdkman.io/) to manage java versions. And make sure that your java version is at least **version 17 or above**.
+
+- After installed all the needed packet above, go to Neovim and install **jdtls** using LSP(**mason**/lsp-installer).
 
 ## References & Credit
 
