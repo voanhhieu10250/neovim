@@ -101,6 +101,7 @@ npm install
 npm run build-plugin
 ```
 
+**NOTE:** You should use [Sdkman](https://sdkman.io/) to manage java versions. Please make sure that your java version is at least **version 17 or above**.
 
 ## References & Credit
 
