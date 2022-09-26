@@ -109,16 +109,16 @@ M.show_documentation = function()
 end
 keymap("n", "K", ":lua require('user.keymaps').show_documentation()<CR>", opts)
 
--- vim.cmd([[
---   function! QuickFixToggle()
---     if empty(filter(getwininfo(), 'v:val.quickfix'))
---       copen
---     else
---       cclose
---     endif
---   endfunction
--- ]])
--- keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
+vim.cmd([[
+  function! QuickFixToggle()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+      copen
+    else
+      cclose
+    endif
+  endfunction
+]])
+keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
 
 -- keymap("n", "<c-l>", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
 

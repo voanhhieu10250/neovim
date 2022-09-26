@@ -86,7 +86,7 @@ local function lsp_keymaps(bufnr)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
 	vim.api.nvim_buf_set_keymap(
 		bufnr,
@@ -109,15 +109,11 @@ M.on_attach = function(client, bufnr)
     require("lsp-inlayhints").on_attach(client, bufnr)
 	end
 
-	if client.name == "jdtls" then
-		client.server_capabilities.document_formatting = false
-	end
-
 	if client.name == "sumneko_lua" then
 		client.server_capabilities.document_formatting = false
 	end
 
-	if client.name == "jdt.ls" then
+	if client.name == "jdtls" then
 		client.server_capabilities.document_formatting = false
     vim.lsp.codelens.refresh()
 		if JAVA_DAP_ACTIVE then
